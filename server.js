@@ -23,6 +23,35 @@ app.get('/', (req, res) => {
     })
 })
 
+db.query(`Select * FROM candidates`, (err, rows) => {
+    // console.table(rows)
+})
+
+db.query(`Select * from candidates WHERE id = 1`, (err, row) => {
+    if (err) {
+        console.log(err)
+    }
+    // console.log(row)
+})
+
+db.query(`Delete FROM candidates WHERE id = ?`, 1, (err, result) => {
+    if (err) {
+        console.log(err)
+    }
+    // console.log(result)
+})
+
+const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected) 
+             VALUES (?,?,?,?)`
+const param = [1, 'Ronald', 'Firebank', 1] 
+
+db.query(sql, param, (err, result) => {
+    if (err) {
+        console.log(err)
+    }
+    console.log(result)
+})
+
 app.use((req, res) => {
     res.status(400).end()
 })
