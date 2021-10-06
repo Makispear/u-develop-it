@@ -17,11 +17,25 @@ const db = mysql.createConnection({
     console.log('Connected to the sql database.')
 )
 // GET 
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Hello World'
-    })
-})
+// app.get('/', (req, res) => {
+//     res.json({
+//         message: 'Hello World'
+//     })
+// })
+// Get all candidates
+app.get('/api/candidates', (req, res) => {
+    const sql = `SELECT * FROM candidates`;
+  
+    db.query(sql, (err, rows) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      return res.json({
+        message: 'success',
+        data: rows
+      });
+    });
+  });
 
 db.query(`Select * FROM candidates`, (err, rows) => {
     // console.table(rows)
