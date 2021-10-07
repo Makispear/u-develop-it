@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../../db/connection');
+const db = require('../../db/connection')
 
 // Get all parties 
 router.get('/parties', (req, res) => {
@@ -29,7 +29,7 @@ router.get('/party/:id', (req, res) => {
           data: rows
         })
       })
-});
+})
   
   // Delete a specific party 
 router.delete('/party/:id', (req, res) => {

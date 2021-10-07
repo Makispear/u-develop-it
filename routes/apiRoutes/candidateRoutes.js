@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../../db/connection');
-const inputCheck = require('../../utils/inputCheck');
+const express = require('express')
+const router = express.Router()
+const db = require('../../db/connection')
+const inputCheck = require('../../utils/inputCheck')
 
 
 // Add a candidate 
@@ -111,4 +111,4 @@ router.delete('/candidate/:id', (req, res) => {
     })
 })
 
-module.exports = router;
+module.exports = router
