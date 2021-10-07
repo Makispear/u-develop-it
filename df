@@ -1,0 +1,65 @@
+[33mcommit 3f311822c9e65a596db5d7a40ea0265b244c49c6[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/feature/parties[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mfeature/parties[m[33m)[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Thu Oct 7 01:00:11 2021 -0400
+
+    Fix: Create the parties table (#2)
+
+[33mcommit b7f1c4f02d4efa0c278cbde0792fe52218033291[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Wed Oct 6 18:16:03 2021 -0400
+
+    add: party and candidates connected
+
+[33mcommit 298569322211cbdbba9c69f463d0e968960506b0[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Wed Oct 6 16:39:19 2021 -0400
+
+    add: Create the parties table (#2)
+
+[33mcommit d5e0da9eb5be41b89722c9da93304ae110d3e754[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/feature/candidates[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/candidates[m[33m)[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Wed Oct 6 14:59:13 2021 -0400
+
+    add CRUD routes
+
+[33mcommit a0565c2e593c1948b3e2e220f88a575ccaf963bb[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Wed Oct 6 01:05:23 2021 -0400
+
+    ignore commit
+
+[33mcommit bb9c799bef80bba9b89efe23d0c106071dee78ca[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Tue Oct 5 19:01:25 2021 -0400
+
+    Create a database that contains the candidates table (#1)
+
+[33mcommit a0b3146085e7f11b092493b864e343de5408ef08[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Tue Oct 5 17:30:39 2021 -0400
+
+    Connected the sql database to the server
+
+[33mcommit f5a11503c8a6ef56deb3a6ee8a80a7f86570b7ee[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Tue Oct 5 17:15:34 2021 -0400
+
+    express setup ready
+
+[33mcommit f21161eb96d85abbbb66e4dcc680c3084c7b3c1d[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Sun Sep 26 17:58:54 2021 -0400
+
+    setup sql
+
+[33mcommit d30db312c09a5ef5bdc6a261c980bd58a971dbf5[m
+Author: Maki Aboabida <maki-miko@hotmail.com>
+Date:   Sun Sep 26 16:16:32 2021 -0400
+
+    added election DATABASE, it's SEEDS and it's SCHEMA
+
+[33mcommit 6f941236a7b2994a758eb3e0915e0419c523e91a[m
+Author: Maki A. Maki <86742009+Makispear@users.noreply.github.com>
+Date:   Sun Sep 26 14:23:16 2021 -0400
+
+    Initial commit
