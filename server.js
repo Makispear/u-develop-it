@@ -17,12 +17,6 @@ const db = mysql.createConnection({
     },
     console.log('Connected to the sql database.')
 )
-// GET 
-// app.get('/', (req, res) => {
-//     res.json({
-//         message: 'Hello World'
-//     })
-// })
 
 // Get all candidates
 app.get('/api/candidates', (req, res) => {
@@ -31,7 +25,6 @@ app.get('/api/candidates', (req, res) => {
                  FROM candidates 
                  LEFT JOIN parties 
                  ON candidates.party_id = parties.id`
-  
     db.query(sql, (err, rows) => {
       if (err) {
         return res.status(500).json({ error: err.message })
@@ -52,11 +45,9 @@ app.get('/api/candidate/:id', (req, res) => {
                  ON candidates.party_id = parties.id 
                  WHERE candidates.id = ?`
     const params = [req.params.id]
-  
     db.query(sql, params, (err, row) => {
       if (err) {
         return res.status(400).json({ error: err.message })
-        
       }
       return res.json({
         message: 'success',
@@ -65,7 +56,21 @@ app.get('/api/candidate/:id', (req, res) => {
     })
 })
 
-// Delete a candidate
+// Get all parties 
+app.get('/api/parties', (req, res) => {
+  const sql = `SELECT * FROM parties`
+  db.query(sql, (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message })
+    }
+    return res.json({
+      message: 'success',
+      data: rows
+    })
+  })
+})
+
+// Delete a specific candidate
 app.delete('/api/candidate/:id', (req, res) => {
     const sql = `DELETE FROM candidates WHERE id = ?`
     const params = [req.params.id]
@@ -87,6 +92,29 @@ app.delete('/api/candidate/:id', (req, res) => {
     })
 })
 
+// Delete a specific party 
+app.delete('/api/party/:id', (req, res) => {
+  const sql = `DELETE FROM parties WHERE id = ?`
+  const params = [req.params.id]
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: res.message })
+      // checks if anything was deleted
+    } else if (!result.affectedRows) {
+      return res.json({
+        message: 'Party not found'
+      })
+    } else {
+      return res.json({
+        message: 'deleted',
+        changes: result.affectedRows,
+        id: req.params.id
+      })
+    }
+  })
+})
+
+// Add a candidate 
 app.post('/api/candidate', ({ body }, res) => {
     const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected')
     if (errors) {
@@ -106,22 +134,49 @@ app.post('/api/candidate', ({ body }, res) => {
     })
 })
 
+// Update a candidate's party
+app.put('/api/candidate/:id', (req, res) => {
+  const errors = inputCheck(req.body, 'party_id')
+  if (errors) {
+    return res.status(400).json({ error: errors})
+  }
+  const sql = `UPDATE candidates SET party_id = ? 
+               WHERE id = ?`
+  const params = [req.body.party_id, req.params.id]
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      res.status(400).json({ error: err.message })
+      // check if a record was found
+    } else if (!result.affectedRows) {
+      res.json({
+        message: 'Candidate not found'
+      })
+    } else {
+      res.json({
+        message: 'success',
+        data: req.body,
+        changes: result.affectedRows
+      })
+    }
+  })
+})
+
 db.query(`Select * FROM candidates`, (err, rows) => {
-    // console.table(rows)
+    // return console.table(rows)
 })
 
 db.query(`Select * from candidates WHERE id = 1`, (err, row) => {
     if (err) {
         return console.log(err)
     }
-    // console.log(row)
+    // return console.log(row)
 })
 
 db.query(`Delete FROM candidates WHERE id = ?`, 1, (err, result) => {
     if (err) {
         console.log(err)
     }
-    // console.log(result)
+    // return console.log(result)
 })
 
 const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected) 
@@ -132,7 +187,7 @@ db.query(sql, param, (err, result) => {
     if (err) {
         console.log(err)
     }
-    // console.log(result)
+    // return console.log(result)
 })
 
 app.use((req, res) => {
