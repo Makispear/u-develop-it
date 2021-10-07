@@ -14,4 +14,4 @@ CREATE TABLE candidates (
   party_id INTEGER,
   industry_connected BOOLEAN NOT NULL,
   CONSTRAINT fk_party FOREIGN KEY (party_id) REFERENCES parties(id) ON DELETE SET NULL
-);;
+);
